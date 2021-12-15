@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto-Russia</title>
+</head>
+<body class="body">
+  <div class="page">
+    <header class="header">
+      <img class="header__logo" src="./images/Vector.svg" alt="Лого">
+      <img class="header__line" src="./images/Line.png" alt="Линия">
+    </header>
+    <main class="content">
+      <section class="profile">
+        <img class="profile__avatar" src="./images/avatar.png" alt="Ава">
+        <div class="profile__info-container">
+          <div class="profile__info">
+            <h1 class="profile__author">Жак-Ив Кусто</h1>
+            <p class="profile__author-about">Исследователь океана</p>
+          </div>
+          <button type="button" class="edit-button"></button>
+        </div>
+        <button class="add-button"></button>
+      </section>
+      <ul class="elements">
+        <li class="elements__item">
+          <img class="elements-image" src="./images/kirill-pershin-karachaevsk.png" alt="Карачаевск">
+          <div class="elements__title-container">
+            <p class="elements__title">Карачаевск</p>
+            <img class="vector-image" src="./images/like.svg" alt="Лайк">
+          </div>
+        </li>
+        <li class="elements__item">
+          <img class="elements-image" src="./images/kirill-pershin-gora.png" alt="Гора Эльбрус">
+          <div class="elements__title-container">
+            <p class="elements__title">Гора Эльбрус</p>
+            <img class="vector-image" src="./images/like.svg" alt="Лайк">
+          </div>
+        </li>
+        <li class="elements__item">
+          <img class="elements-image" src="./images/kirill-pershin-dombai.png" alt="Домбай">
+          <div class="elements__title-container">
+            <p class="elements__title">Домбай</p>
+            <img class="vector-image" src="./images/like.svg" alt="Лайк">
+          </div>
+        </li>
+        <li class="elements__item">
+          <img class="elements-image" src="./images/kirill-pershin-gora.png" alt="Гора Эльбрус">
+          <div class="elements__title-container">
+            <p class="elements__title">Гора Эльбрус</p>
+            <img class="vector-image" src="./images/like.svg" alt="Лайк">
+          </div>
+        </li>
+        <li class="elements__item">
+          <img class="elements-image" src="./images/kirill-pershin-dombai.png" alt="Домбай">
+          <div class="elements__title-container">
+            <p class="elements__title">Домбай</p>
+            <img class="vector-image" src="./images/like.svg" alt="Лайк">
+          </div>
+        </li>
+        <li class="elements__item">
+          <img class="elements-image" src="./images/kirill-pershin-karachaevsk.png" alt="Карачаевск">
+          <div class="elements__title-container">
+            <p class="elements__title">Карачаево-Черкессия</p>
+            <img class="vector-image" src="./images/like.svg" alt="Лайк">
+          </div>
+        </li>     
+      </ul>
+    </main>
+    <section class="footer">
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </section>
+    <div class="popup">
+      <div class="popup__window">
+        <button type="button" class="popup__close">
+          <img src="./images/Close-Icon.svg" alt="Закрыть" class="popup__close-image">
+        </button>
+        <p class="popup__title">Редактировать профиль</p>
+        <form class="form">
+          <input type="text" class="form__input" id="title">
+          <input type="text" class="form__input" id="subtitle">
+          <button type="submit" class="form__button">Сохранить</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="./script/script.js"></script>
+</body>
+</html> 

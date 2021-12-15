@@ -1,0 +1,19 @@
+.profile__author{
+  font-family: Inter;
+  font-size: 42px;
+  line-height: 48px;
+  line-height: 94%;
+  font-weight: 500;
+  margin: 0;
+  padding-top: 22px;
+}
+
+
+@media screen and (max-width: 660px){
+  .profile__author{
+    font-size: 27px;
+    line-height: 33px;
+    font-weight: 500;
+    padding-top: 0px;
+  }
+}
