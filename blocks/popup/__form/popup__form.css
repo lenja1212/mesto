@@ -1,15 +1,5 @@
-.popup__window{
-  background: #FFFFFF;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
-  width: 430px;
-  height: 330px;
-  position: relative;
-}
-
-@media screen and (max-width: 660px) {
-  .popup__window {
-    width: 282px;
-    height: 322px;
-  }
+.popup__form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

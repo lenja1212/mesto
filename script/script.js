@@ -1,6 +1,6 @@
-let popOpen = document.querySelector(".edit-button")
+let popOpen = document.querySelector(".profile__edit-button")
 let popup = document.querySelector(".popup");
-let formElem = document.querySelector(".form");
+let formElem = document.querySelector(".popup__form");
 let prName = formElem.querySelector("#title");
 let prAbout = formElem.querySelector("#subtitle");
 let popClose = document.querySelector(".popup__close");
@@ -22,7 +22,6 @@ function formSubmitHandler(evt){
   evt.preventDefault();
   prAuthor.textContent = prName.value;
   prInfo.textContent = prAbout.value;
-  console.log("COOL");
   closePopup();
 }
 
