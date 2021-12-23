@@ -5,6 +5,9 @@
   font-weight: 500;
   margin: 0;
   padding-top: 22px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 
@@ -14,5 +17,6 @@
     line-height: 33px;
     font-weight: 500;
     padding-top: 0px;
+    max-width: 200px;
   }
 }
