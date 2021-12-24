@@ -18,7 +18,7 @@
   .profile__add-button{
     background: url(../../../images/Add-Button282.svg);
     background-repeat: no-repeat;
-    margin: 36px auto;
+    margin: 36px auto 0;
     min-width: 282px;
   }
 }
