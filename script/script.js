@@ -1,8 +1,8 @@
 let popOpen = document.querySelector(".profile__edit-button")
 let popup = document.querySelector(".popup");
 let formElem = document.querySelector(".popup__form");
-let prName = document.querySelector("#title");
-let prAbout = document.querySelector("#subtitle");
+let prName = document.querySelector(".popup_format_title");
+let prAbout = document.querySelector(".popup_format_subtitle");
 let popClose = document.querySelector(".popup__close");
 
 let prAuthor = document.querySelector(".profile__author");

@@ -1,0 +1,19 @@
+.popup_format_title {
+  border: none;
+  padding: 0;
+  width: 358px;
+  height: 27px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+
+@media screen and (max-width: 660px) {
+  .popup_format_title {
+    width: 238px;
+    height: 27px;
+  }
+}
