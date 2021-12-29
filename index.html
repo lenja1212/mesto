@@ -23,65 +23,51 @@
         </div>
         <button class="profile__add-button"></button>
       </section>
-      <ul class="elements">
-        <li class="elements__item">
-          <img class="elements__image" src="./images/kirill-pershin-karachaevsk.png" alt="Карачаевск">
-          <div class="elements__title-container">
-            <p class="elements__title">Карачаевск</p>
-            <button type="button" class="elements__like"></button>
-          </div>
-        </li>
-        <li class="elements__item">
-          <img class="elements-image" src="./images/kirill-pershin-gora.png" alt="Гора Эльбрус">
-          <div class="elements__title-container">
-            <p class="elements__title">Гора Эльбрус</p>
-            <button type="button" class="elements__like"></button>
-          </div>
-        </li>
-        <li class="elements__item">
-          <img class="elements-image" src="./images/kirill-pershin-dombai.png" alt="Домбай">
-          <div class="elements__title-container">
-            <p class="elements__title">Домбай</p>
-            <button type="button" class="elements__like"></button>
-          </div>
-        </li>
-        <li class="elements__item">
-          <img class="elements-image" src="./images/kirill-pershin-gora.png" alt="Гора Эльбрус">
-          <div class="elements__title-container">
-            <p class="elements__title">Гора Эльбрус</p>
-            <button type="button" class="elements__like"></button>
-          </div>
-        </li>
-        <li class="elements__item">
-          <img class="elements-image" src="./images/kirill-pershin-dombai.png" alt="Домбай">
-          <div class="elements__title-container">
-            <p class="elements__title">Домбай</p>
-            <button type="button" class="elements__like"></button>
-          </div>
-        </li>
-        <li class="elements__item">
-          <img class="elements-image" src="./images/kirill-pershin-karachaevsk.png" alt="Карачаевск">
-          <div class="elements__title-container">
-            <p class="elements__title">Карачаево-Черкессия</p>
-            <button type="button" class="elements__like"></button>
-          </div>
-        </li>     
+      <ul class="elements">        
       </ul>
     </main>
     <section class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </section>
-    <div class="popup">
+    <div class="popup popup_format_edit">
       <div class="popup__window">
-        <button type="button" class="popup__close"></button>
+        <button type="button" class="popup__close popup__close_format_edit"></button>
         <p class="popup__title">Редактировать профиль</p>
-        <form class="popup__form">
+        <form class="popup__form popup__form_format_edit">
           <input type="text" class="popup__input popup__input_format_title">
           <input type="text" class="popup__input popup__input_format_subtitle">
           <button type="submit" class="popup__button">Сохранить</button>
         </form>
       </div>
     </div>
+    <div class="popup popup_format_add">  
+      <div class="popup__window">
+        <button type="button" class="popup__close popup__close_format_add"></button>
+        <p class="popup__title">Новое место</p>
+        <form class="popup__form popup__form_format_add">
+          <input type="text" placeholder="Название" class="popup__input popup__input_format_name">
+          <input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_format_link">
+          <button type="submit" class="popup__button">Создать</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_format_image">
+      <div class="popup__container">
+        <button type="button" class="popup__close popup__close_format_img"></button>
+        <img class="popup__image" src="" alt="">
+        <p class="popup__subtitle"></p>
+      </div>  
+    </div>
+    <template class="elements__template">
+      <div class="elements__item">
+        <button type="button" class="elements__item_close"></button>
+        <img class="elements__image" src="" alt="">
+        <div class="elements__title-container">
+          <p class="elements__title"></p>
+          <button type="button" class="elements__like"></button>
+        </div>
+      </li>
+    </template>
   </div>
   <script src="./script/script.js"></script>
 </body>

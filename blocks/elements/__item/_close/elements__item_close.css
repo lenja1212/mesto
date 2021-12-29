@@ -1,0 +1,18 @@
+.elements__item_close{
+  border: none;
+  background: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  transition: opacity 0.1s linear;
+  cursor: pointer;
+  background-image: url(../../../../../images/bin.svg);
+  width: 18px;
+  height: 19px;
+  padding: 0;
+}
+  
+.elements__item_close:hover{
+  opacity: 0.6;
+}
+  

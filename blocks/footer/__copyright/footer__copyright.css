@@ -8,6 +8,12 @@
   text-align: left;
 }
 
+@media screen and (max-width: 880px){
+  .footer__copyright{
+    padding-left: 0px;
+  }
+}
+
 
 @media screen and (max-width: 660px){
   .footer__copyright{
