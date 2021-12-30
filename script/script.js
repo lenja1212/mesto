@@ -1,60 +1,52 @@
-let popOpenEdit = document.querySelector(".profile__edit-button")
-let popupEdit = document.querySelector(".popup_format_edit");
-let formEditElem = document.querySelector(".popup__form_format_edit");
-let prName = document.querySelector(".popup__input_format_title");
-let prAbout = document.querySelector(".popup__input_format_subtitle");
-let popCloseE = document.querySelector(".popup__close_format_edit");
+const popOpenEdit = document.querySelector(".profile__edit-button")
+const popupEdit = document.querySelector(".popup_format_edit");
+const formEditElem = document.querySelector(".popup__form_format_edit");
+const prName = document.querySelector(".popup__input_format_title");
+const prAbout = document.querySelector(".popup__input_format_subtitle");
+const popCloseEdit = document.querySelector(".popup__close_format_edit");
 
-let prAuthor = document.querySelector(".profile__author");
-let prInfo = document.querySelector(".profile__author-about")
+const prAuthor = document.querySelector(".profile__author");
+const prInfo = document.querySelector(".profile__author-about")
 
-function openEditPopup(){
-  prName.value = prAuthor.textContent;
-  prAbout.value = prInfo.textContent;
-  popupEdit.classList.add('popup_visible');
+function openPopup(popupName){
+  popupName.classList.add('popup_visible');
 }
 
-function closePopupE(){
-  popupEdit.classList.remove('popup_visible');
+function closePopup(popupName){
+  popupName.classList.remove('popup_visible');
 }
 
-function formSubmitHandler(evt){
+function handleSubmitEditCard(evt){
   evt.preventDefault();
   prAuthor.textContent = prName.value;
   prInfo.textContent = prAbout.value;
-  closePopupE();
+  closePopup(popupEdit);
 }
 
 
-popCloseE.addEventListener('click', closePopupE);
-popOpenEdit.addEventListener('click', openEditPopup);
-formEditElem.addEventListener('submit', formSubmitHandler);
+popCloseEdit.addEventListener('click', function(){
+  closePopup(popupEdit);
+});
+popOpenEdit.addEventListener('click', function(){
+  openPopup(popupEdit);
+  prName.value = prAuthor.textContent;
+  prAbout.value = prInfo.textContent;
+});
+
+formEditElem.addEventListener('submit', handleSubmitEditCard);
 
 /////////////////////////////////////////////////
 
-let popOpenAdd = document.querySelector(".profile__add-button");
-let popupAdd = document.querySelector(".popup_format_add");
-let popCloseA = document.querySelector(".popup__close_format_add");
-let formAddElem = document.querySelector(".popup__form_format_add");
-let elTitle= document.querySelector(".popup__input_format_name");
-let elImg = document.querySelector(".popup__input_format_link");
-let popCloseI = document.querySelector(".popup__close_format_img");
-let cardsGrid = document.querySelector(".elements");
-let formImgElem = document.querySelector(".popup_format_image");
+const popOpenAdd = document.querySelector(".profile__add-button");
+const popupAdd = document.querySelector(".popup_format_add");
+const popCloseAdd = document.querySelector(".popup__close_format_add");
+const formAddElem = document.querySelector(".popup__form_format_add");
+const elTitle= document.querySelector(".popup__input_format_name");
+const elImg = document.querySelector(".popup__input_format_link");
+const popCloseImg = document.querySelector(".popup__close_format_img");
+const cardsGrid = document.querySelector(".elements");
+const formImgElem = document.querySelector(".popup_format_image");
 
-
-function closePopupI(){
-  formImgElem.classList.remove('popup_visible');
-}
-
-
-function openAddPopup(){
-  popupAdd.classList.add('popup_visible');
-}
-
-function closePopupA(){
-  popupAdd.classList.remove('popup_visible');
-}
 
 
 const initialCards = [
@@ -84,55 +76,69 @@ const initialCards = [
   }
 ]; 
 
-
-//let elemImg = cardsArr[1].querySelector(".elements-image");
-//console.log(elemImg.attributes);
-
-
-
 const tempElems = document.querySelector(".elements__template").content;
+
+
+function appendCard(Grid_of_cards, cardName){
+  Grid_of_cards.append(cardName);
+}
+
+function enlargeCard(cardName, cardLink){
+  cardImg = document.querySelector(".popup_format_image");
+  cardImg.querySelector(".popup__image").src = cardLink;
+  cardImg.querySelector(".popup__subtitle").textContent = cardName;
+}
+
+function removeCard(oneCardItem){
+  oneCardItem.remove();
+}
+
+function addLikeButton(evt){
+  evt.target.classList.toggle("elements__like_active");
+}
+
 
 function addCard(cardName, cardLink){
   const cardItem = tempElems.querySelector(".elements__item").cloneNode(true);
   cardItem.querySelector(".elements__image").src = cardLink;
   cardItem.querySelector(".elements__title").textContent = cardName;
-  cardsGrid.append(cardItem);
   //like button
-  cardItem.querySelector(".elements__like").addEventListener("click", function (evt){ 
-    evt.target.classList.toggle("elements__like_active");
-  });
+  cardItem.querySelector(".elements__like").addEventListener("click", addLikeButton);
   //delete button 
   cardItem.querySelector(".elements__item_close").addEventListener("click",function (){
-    cardItem.remove();
+    removeCard(cardItem);
   });
   //enlarge
-  cardItem.querySelector(".elements__image").addEventListener("click",function (evt){
-    evt.preventDefault();
-    cardImg = document.querySelector(".popup_format_image");
-    cardImg.querySelector(".popup__image").src = cardLink;
-    cardImg.querySelector(".popup__subtitle").textContent = cardName;
-    cardImg.classList.add('popup_visible');
+  cardItem.querySelector(".elements__image").addEventListener("click", function (){
+    enlargeCard(cardName, cardLink);
+    openPopup(cardImg);
   });
+  return cardItem;
 }
 
 //function deleteCard(cardName, cardLink){
 
 initialCards.forEach(function (item){
-  addCard(item.name, item.link);
+  appendCard(cardsGrid, addCard(item.name, item.link));
 });
 
-let cardsArr = document.querySelectorAll(".elements__item");
 
-function formSubmitHandlerAdd(evt){
+function handleSubmitAddCard(evt){
   evt.preventDefault();
-  cardsArr[0].querySelector(".elements__image").src = elImg.value;
-  cardsArr[0].querySelector(".elements__title").textContent = elTitle.value;
-  closePopupA();
+  cardsGrid.prepend(addCard(elTitle.value, elImg.value));
+  closePopup(popupAdd);
 }
 
 
 
-popOpenAdd.addEventListener('click', openAddPopup);
-popCloseA.addEventListener('click', closePopupA);
-formAddElem.addEventListener('submit', formSubmitHandlerAdd);
-popCloseI.addEventListener('click', closePopupI);
+popOpenAdd.addEventListener('click', function(){
+  openPopup(popupAdd);
+});
+popCloseAdd.addEventListener('click', function(){
+  closePopup(popupAdd);
+});
+popCloseImg.addEventListener('click', function(){
+  closePopup(formImgElem);
+});
+
+formAddElem.addEventListener('submit', handleSubmitAddCard);
