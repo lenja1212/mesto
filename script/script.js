@@ -142,3 +142,5 @@ popCloseImg.addEventListener('click', function(){
 });
 
 formAddElem.addEventListener('submit', handleSubmitAddCard);
+
+//Happy new year!
