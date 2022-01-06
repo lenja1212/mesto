@@ -28,9 +28,9 @@ popCloseEdit.addEventListener('click', function(){
   closePopup(popupEdit);
 });
 popOpenEdit.addEventListener('click', function(){
-  openPopup(popupEdit);
   prName.value = prAuthor.textContent;
   prAbout.value = prInfo.textContent;
+  openPopup(popupEdit);
 });
 
 formEditElem.addEventListener('submit', handleSubmitEditCard);
@@ -143,4 +143,3 @@ popCloseImg.addEventListener('click', function(){
 
 formAddElem.addEventListener('submit', handleSubmitAddCard);
 
-//Happy new year!
