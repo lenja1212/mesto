@@ -27,6 +27,7 @@ function handleSubmitEditCard(evt){
 popCloseEdit.addEventListener('click', function(){
   closePopup(popupEdit);
 });
+
 popOpenEdit.addEventListener('click', function(){
   prName.value = prAuthor.textContent;
   prAbout.value = prInfo.textContent;
@@ -142,4 +143,30 @@ popCloseImg.addEventListener('click', function(){
 });
 
 formAddElem.addEventListener('submit', handleSubmitAddCard);
+
+////////////////////////////////////////
+/*
+//const formEditElem = document.querySelector(".popup__form_format_edit");
+const titleError = formEditElem.querySelector(`.${prName.id}-error`);
+
+prName.addEventListener("input", function(evt){
+  console.log(evt.target.validity.valid);
+});
+*/
+
+
+
+document.addEventListener("click", function(evt){
+  if(evt.target.classList.contains("popup")){
+    closePopup(evt.target);
+  }
+});
+
+document.addEventListener("keydown", function(evt){
+  const openedPopup = document.querySelector(".popup_visible");
+//  if(evt.target.classList.contains('popup')){
+  if(evt.key === "Escape"){
+    closePopup(openedPopup);
+  }
+});
 
