@@ -5,6 +5,7 @@
 }
 
 .popup__button_inactive:hover {
-  color: #FFFFFF;
-  background: rgba(0, 0, 0, 0.8);
+  color:  rgba(0, 0, 0, 0.15);
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.15);
 }
