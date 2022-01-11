@@ -19,8 +19,6 @@ const isValid = (form, formInputElement, errorClass) => {
   }
 };
   
-
-  
 const setErrorListeners = (form, inputSelector, submitButtonSelector, inactiveButtonClass, errorClass) =>{
   const formInputArray = Array.from(form.querySelectorAll(inputSelector));
   const buttonElement = form.querySelector(submitButtonSelector);

@@ -57,6 +57,7 @@ function openPopup(popupName){
 function closePopup(popupName){
   popupName.classList.remove('popup_visible');
   document.removeEventListener("keydown", closeByEsc);
+  document.removeEventListener("click", closeByClick);
 }
 
 function handleSubmitEditCard(evt){
