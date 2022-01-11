@@ -8,38 +8,6 @@ const popCloseEdit = document.querySelector(".popup__close_format_edit");
 const prAuthor = document.querySelector(".profile__author");
 const prInfo = document.querySelector(".profile__author-about")
 
-function openPopup(popupName){
-  popupName.classList.add('popup_visible');
-  document.addEventListener("click", closeByClick);
-  document.addEventListener("keydown", closeByEsc);
-}
-
-function closePopup(popupName){
-  popupName.classList.remove('popup_visible');
-}
-
-function handleSubmitEditCard(evt){
-  evt.preventDefault();
-  prAuthor.textContent = prName.value;
-  prInfo.textContent = prAbout.value;
-  closePopup(popupEdit);
-}
-
-
-popCloseEdit.addEventListener('click', function(){
-  closePopup(popupEdit);
-});
-
-popOpenEdit.addEventListener('click', function(){
-  prName.value = prAuthor.textContent;
-  prAbout.value = prInfo.textContent;
-  openPopup(popupEdit);
-});
-
-formEditElem.addEventListener('submit', handleSubmitEditCard);
-
-/////////////////////////////////////////////////
-
 const popOpenAdd = document.querySelector(".profile__add-button");
 const popupAdd = document.querySelector(".popup_format_add");
 const popCloseAdd = document.querySelector(".popup__close_format_add");
@@ -49,8 +17,7 @@ const elImg = document.querySelector(".popup__input_format_link");
 const popCloseImg = document.querySelector(".popup__close_format_img");
 const cardsGrid = document.querySelector(".elements");
 const formImgElem = document.querySelector(".popup_format_image");
-
-
+const buttonSubmitAdd= document.querySelector(".popup__button-submit-add");
 
 const initialCards = [
   {
@@ -81,6 +48,23 @@ const initialCards = [
 
 const tempElems = document.querySelector(".elements__template").content;
 
+function openPopup(popupName){
+  popupName.classList.add('popup_visible');
+  document.addEventListener("click", closeByClick);
+  document.addEventListener("keydown", closeByEsc);
+}
+
+function closePopup(popupName){
+  popupName.classList.remove('popup_visible');
+  document.removeEventListener("keydown", closeByEsc);
+}
+
+function handleSubmitEditCard(evt){
+  evt.preventDefault();
+  prAuthor.textContent = prName.value;
+  prInfo.textContent = prAbout.value;
+  closePopup(popupEdit);
+}
 
 function appendCard(Grid_of_cards, cardName){
   Grid_of_cards.append(cardName);
@@ -126,28 +110,11 @@ initialCards.forEach(function (item){
   appendCard(cardsGrid, addCard(item.name, item.link));
 });
 
-
 function handleSubmitAddCard(evt){
   evt.preventDefault();
   cardsGrid.prepend(addCard(elTitle.value, elImg.value));
   closePopup(popupAdd);
 }
-
-
-
-popOpenAdd.addEventListener('click', function(){
-  elTitle.value = "";
-  elImg.value= "";
-  openPopup(popupAdd);
-});
-popCloseAdd.addEventListener('click', function(){
-  closePopup(popupAdd);
-});
-popCloseImg.addEventListener('click', function(){
-  closePopup(formImgElem);
-});
-
-formAddElem.addEventListener('submit', handleSubmitAddCard);
 
 ////////////////////////////////////////
 /*
@@ -159,7 +126,6 @@ prName.addEventListener("input", function(evt){
 });
 */
 
-
 /*
 document.addEventListener("click", function(evt){
   if(evt.target.classList.contains("popup")){
@@ -168,18 +134,45 @@ document.addEventListener("click", function(evt){
 });
 */
 
-
 function closeByClick(evt){
   if(evt.target.classList.contains("popup")){
     closePopup(evt.target);
-    evt.target.removeEventListener("click", closeByClick);
+    document.removeEventListener("click", closeByClick);
   }
 };
 
 function closeByEsc(evt){
   if(evt.key === "Escape"){
     const openedPopup = document.querySelector(".popup_visible");
-    evt.target.removeEventListener("keydown", closeByEsc);
     closePopup(openedPopup);    
   }
 };
+
+popCloseEdit.addEventListener('click', function(){
+  closePopup(popupEdit);
+});
+
+popOpenEdit.addEventListener('click', function(){
+  prName.value = prAuthor.textContent;
+  prAbout.value = prInfo.textContent;
+  openPopup(popupEdit);
+});
+
+formEditElem.addEventListener('submit', handleSubmitEditCard);
+
+popOpenAdd.addEventListener('click', function(){
+  elTitle.value = "";
+  elImg.value= "";
+  openPopup(popupAdd);
+  blockButtonWhenOpen(buttonSubmitAdd, DataInput.inactiveButtonClass);
+});
+
+popCloseAdd.addEventListener('click', function(){
+  closePopup(popupAdd);
+});
+
+popCloseImg.addEventListener('click', function(){
+  closePopup(formImgElem);
+});
+
+formAddElem.addEventListener('submit', handleSubmitAddCard);

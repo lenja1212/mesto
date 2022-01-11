@@ -7,7 +7,6 @@ const showInputError = (form, formInputElement, errMessage, errorClass) => {
 
 const hideInputError = (form, formInputElement, errorClass) => {
   const elementWithError = form.querySelector(`.${formInputElement.id}-error`)
-//  form.classList.remove("popup__input_format_title-error");
   elementWithError.classList.remove(errorClass);
   elementWithError.textContent = " ";
 };
@@ -20,9 +19,7 @@ const isValid = (form, formInputElement, errorClass) => {
   }
 };
   
-//formEditElem.addEventListener("submit", function(evt){
- // evt.preventDefault();
-//});
+
   
 const setErrorListeners = (form, inputSelector, submitButtonSelector, inactiveButtonClass, errorClass) =>{
   const formInputArray = Array.from(form.querySelectorAll(inputSelector));
@@ -52,19 +49,11 @@ const hasInvalidInput = (formInputArray) => {
     return !inputElement.validity.valid;
   })
 }; 
-  /*
-  function removeSubmit(buttonElement){
-    buttonElement.removeEventListener('submit', handleSubmitEditCard);
-  }
-  function addSubmit(buttonElement){
-    buttonElement.removeEventListener('submit', handleSubmitEditCard);
-  }
-  */
+
 const toggleButtonState = (formInputArray, buttonElement, inactiveButtonClass) => {
   if (hasInvalidInput(formInputArray)) {
     blockButtonWhenOpen(buttonElement, inactiveButtonClass);
  //   removeSubmit(buttonElement);
-    
 //    console.log("nonactive");
   } else {
     buttonElement.classList.remove(inactiveButtonClass);
@@ -79,13 +68,14 @@ const blockButtonWhenOpen = (buttonElement, inactiveButtonClass) =>{
   buttonElement.classList.add(inactiveButtonClass);
 };
 
-
-enableValidation({
+const DataInput = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_inactive',
   inputErrorClass: 'popup__input-error',
   errorClass: 'popup__input-error_active'
-}); 
+};
+
+enableValidation(DataInput); 
   
