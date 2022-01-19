@@ -1,3 +1,5 @@
+import{blockButtonWhenOpen, DataInput, clearFormErrors} from "./FormValidator.js";
+
 const popOpenEdit = document.querySelector(".profile__edit-button")
 const popupEdit = document.querySelector(".popup_format_edit");
 const formEditElem = document.querySelector(".popup__form_format_edit");
@@ -15,38 +17,14 @@ const formAddElem = document.querySelector(".popup__form_format_add");
 const elTitle= document.querySelector(".popup__input_format_name");
 const elImg = document.querySelector(".popup__input_format_link");
 const popCloseImg = document.querySelector(".popup__close_format_img");
-const cardsGrid = document.querySelector(".elements");
+export const cardsGrid = document.querySelector(".elements");
 const formImgElem = document.querySelector(".popup_format_image");
 const buttonSubmitAdd= document.querySelector(".popup__button-submit-add");
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-]; 
 
 const tempElems = document.querySelector(".elements__template").content;
+
+
 
 function openPopup(popupName){
   popupName.classList.add('popup_visible');
@@ -71,24 +49,25 @@ function appendCard(Grid_of_cards, cardName){
   Grid_of_cards.append(cardName);
 }
 
-function enlargeCard(cardName, cardLink){
-  cardImg = document.querySelector(".popup_format_image");
+export function enlargeCard(cardName, cardLink){
+  const cardImg = document.querySelector(".popup_format_image");
   cardImg.querySelector(".popup__image").src = cardLink;
   cardImg.querySelector(".popup__subtitle").textContent = cardName;
   openPopup(cardImg);
 }
 
-function removeCard(oneCardItem){
+export function removeCard(oneCardItem){
   oneCardItem.remove();
 }
 
-function addLikeButton(evt){
+export function addLikeButton(evt){
   evt.target.classList.toggle("elements__like_active");
 }
 
 
 function addCard(cardName, cardLink){
   const cardItem = tempElems.querySelector(".elements__item").cloneNode(true);
+//  console.log(cardItem);
   cardItem.querySelector(".elements__image").src = cardLink;
   cardItem.querySelector(".elements__title").textContent = cardName;
   //like button
@@ -100,16 +79,9 @@ function addCard(cardName, cardLink){
   //enlarge
   cardItem.querySelector(".elements__image").addEventListener("click", function (){
     enlargeCard(cardName, cardLink);
-  
   });
   return cardItem;
 }
-
-//function deleteCard(cardName, cardLink){
-
-initialCards.forEach(function (item){
-  appendCard(cardsGrid, addCard(item.name, item.link));
-});
 
 function handleSubmitAddCard(evt){
   evt.preventDefault();
@@ -118,22 +90,7 @@ function handleSubmitAddCard(evt){
 }
 
 ////////////////////////////////////////
-/*
-//const formEditElem = document.querySelector(".popup__form_format_edit");
-const titleError = formEditElem.querySelector(`.${prName.id}-error`);
 
-prName.addEventListener("input", function(evt){
-  console.log(evt.target.validity.valid);
-});
-*/
-
-/*
-document.addEventListener("click", function(evt){
-  if(evt.target.classList.contains("popup")){
-    closePopup(evt.target);
-  }
-});
-*/
 
 function closeByClick(evt){
   if(evt.target.classList.contains("popup")){
@@ -151,6 +108,7 @@ function closeByEsc(evt){
 
 popCloseEdit.addEventListener('click', function(){
   closePopup(popupEdit);
+  clearFormErrors(formEditElem, DataInput.inputSelector, DataInput.errorClass);
 });
 
 popOpenEdit.addEventListener('click', function(){
@@ -170,6 +128,7 @@ popOpenAdd.addEventListener('click', function(){
 
 popCloseAdd.addEventListener('click', function(){
   closePopup(popupAdd);
+  clearFormErrors(formAddElem, DataInput.inputSelector, DataInput.errorClass);
 });
 
 popCloseImg.addEventListener('click', function(){
@@ -177,3 +136,4 @@ popCloseImg.addEventListener('click', function(){
 });
 
 formAddElem.addEventListener('submit', handleSubmitAddCard);
+
