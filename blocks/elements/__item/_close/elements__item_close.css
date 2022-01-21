@@ -10,6 +10,7 @@
   width: 18px;
   height: 19px;
   padding: 0;
+  z-index: 1;
 }
   
 .elements__item_close:hover{

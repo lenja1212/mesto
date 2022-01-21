@@ -2,4 +2,9 @@
   width: 282px;
   height: 282px;
   object-fit: cover;
+  z-index: 2;
+}
+
+.elements__image:hover{
+  opacity: 0.6;
 }
