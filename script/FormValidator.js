@@ -96,22 +96,3 @@ class FormValidator{
 
 
 export {FormValidator, dataInput};
-/*
-const blockButtonWhenOpen = (buttonElement, inactiveButtonClass) =>{
-  buttonElement.setAttribute('disabled', true);
-  buttonElement.classList.add(inactiveButtonClass);
-};
-
-const hideInputError = (form, formInputElement, errorClass) => {
-  const elementWithError = form.querySelector(`.${formInputElement.id}-error`)
-  elementWithError.classList.remove(errorClass);
-  elementWithError.textContent = " ";
-};
-
-const clearFormErrors = (form, inputSelector, errorClass) =>{
-  const formInputArray = Array.from(form.querySelectorAll(inputSelector));
-  formInputArray.forEach((formInputElement) =>{
-    hideInputError(form, formInputElement, errorClass);
-  });
-}
-*/
