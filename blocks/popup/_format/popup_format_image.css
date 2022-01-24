@@ -1,3 +1,4 @@
 .popup_format_image{
   flex-direction: column;
+  z-index: 2;
 }

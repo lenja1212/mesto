@@ -15,20 +15,19 @@ class FormValidator{
     this._inactiveButtonClass = dataInput.inactiveButtonClass;
     this._inputErrorClass = dataInput.inputErrorClass;
     this._errorClass = dataInput.errorClass;
-    this._formInputElement = formInputElement; //form
-    this._form = this._formInputElement;
+    this._form = formInputElement; //form
     this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
-    this._submitButton = this._formInputElement.closest(this._formSelector).querySelector(this._submitButtonSelector);
+    this._submitButton = this._form.closest(this._formSelector).querySelector(this._submitButtonSelector);
   }
 
   _showInputError(){
-  const elementWithError = this._formInputElement.closest(this._formSelector).querySelector(`.${this._inputElement.id}-error`)
+  const elementWithError = this._form.closest(this._formSelector).querySelector(`.${this._inputElement.id}-error`)
     elementWithError.textContent = this._inputElement.validationMessage;
     elementWithError.classList.add(this._errorClass);
   }
 
   _hideInputError(){ 
-    const elementWithError = this._formInputElement.closest(this._formSelector).querySelector(`.${this._inputElement.id}-error`)
+    const elementWithError = this._form.closest(this._formSelector).querySelector(`.${this._inputElement.id}-error`)
     elementWithError.classList.remove(this._errorClass);
     elementWithError.textContent = " ";
   }
