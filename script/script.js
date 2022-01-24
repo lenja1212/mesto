@@ -1,5 +1,6 @@
 import{FormValidator, dataInput} from "./FormValidator.js";
 import{Card} from "./Card.js";
+import {openPopup, closePopup} from "./utils.js";
 
 const popOpenEdit = document.querySelector(".profile__edit-button")
 const popupEdit = document.querySelector(".popup_format_edit");
@@ -27,8 +28,8 @@ const buttonSubmitAdd= document.querySelector(".popup__button-submit-add");
 
 const formsArray = Array.from(document.querySelectorAll(dataInput.formSelector));
 //console.log(formsArray);
-const formEdit = new FormValidator(dataInput, formsArray[0]);
-const formAdd = new FormValidator(dataInput, formsArray[1]);
+const formEdit = new FormValidator(dataInput, formEditElem);
+const formAdd = new FormValidator(dataInput, formAddElem);
 
 const initialCards = [ // Вынес сюда, так как, см Card.js стр. 25
   {
@@ -57,20 +58,6 @@ const initialCards = [ // Вынес сюда, так как, см Card.js ст�
   }
 ]; 
 
-
-
-export function openPopup(popupName){
-  popupName.classList.add('popup_visible');
-  document.addEventListener("mousedown", closeByClick);
-  document.addEventListener("keydown", closeByEsc);
-}
-
-function closePopup(popupName){
-  popupName.classList.remove('popup_visible');
-  document.removeEventListener("keydown", closeByEsc);
-  document.removeEventListener("click", closeByClick);
-}
-
 function handleSubmitEditCard(evt){
   evt.preventDefault();
   prAuthor.textContent = prName.value;
@@ -79,7 +66,7 @@ function handleSubmitEditCard(evt){
 }
 
 
-function addCard(data, cardSelector){
+function createCard(data, cardSelector){
   const card = new Card(data, cardSelector);
     return card.generateCard();
 }
@@ -92,34 +79,16 @@ function handleSubmitAddCard(evt){
     name: elTitle.value,
     link: elImg.value
  };
-  cardsGrid.prepend(addCard(dataAdd, ".elements__template"));
+  cardsGrid.prepend(createCard(dataAdd, ".elements__template"));
   closePopup(popupAdd);
 }
 
 ////////////////////////////////////////
 
 
-function closeByClick(evt){
-  if(evt.target.classList.contains("popup")){
-    closePopup(evt.target);
-  }
-};
-
-function closeByEsc(evt){
-  if(evt.key === "Escape"){
-    const formOpened = new FormValidator(dataInput, document.querySelector(".popup_visible").querySelector(dataInput.formSelector));
-    const openedPopup = document.querySelector(".popup_visible");
-  //  console.log(document.querySelector(".popup_visible").querySelector(dataInput.formSelector));
-    formOpened.clearFormErrors();
-    closePopup(openedPopup);    
-  }
-};
-
 function renderElements(){
   initialCards.forEach((item) => {
-    let card;
-    card = new Card(item, ".elements__template");
-    const cardElement = card.generateCard();
+    const cardElement = createCard(item, ".elements__template");
     cardsGrid.append(cardElement);
   });
 }
@@ -133,6 +102,7 @@ popOpenEdit.addEventListener('click', function(){
   prName.value = prAuthor.textContent;
   prAbout.value = prInfo.textContent;
   openPopup(popupEdit);
+  formEdit.clearFormErrors();
 });
 
 formEditElem.addEventListener('submit', handleSubmitEditCard);
@@ -142,6 +112,7 @@ popOpenAdd.addEventListener('click', function(){
   elImg.value= "";
   openPopup(popupAdd);
   formAdd.blockButtonWhenOpen();
+  formAdd.clearFormErrors();
 });
 
 popCloseAdd.addEventListener('click', function(){
