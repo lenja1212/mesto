@@ -1,3 +1,4 @@
+/*
 function openPopup(popupName){
   popupName.classList.add('popup_visible');
   document.addEventListener("mousedown", closeByClick);
@@ -24,4 +25,5 @@ function closeByEsc(evt){
   }
 };
 
-export {openPopup, closePopup}
+export {openPopup}//, closePopup}
+*/

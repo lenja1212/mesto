@@ -1,10 +1,13 @@
-import {openPopup} from "./utils.js";
+//import {openPopup} from "./utils.js";
+import PopupWithImage from "./PopupWithImage.js";
 
-export class Card{
-  constructor(data, cardSelector){
+
+export default class Card{
+  constructor(data, cardSelector, {handleCardClick}){
     this._title = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    this._handleClick = handleCardClick;
   }
   _getTemplate() {
     const cardElement = document
@@ -22,32 +25,23 @@ export class Card{
     this._element.remove();
   }
 
-  _enlargeCard(){ //По заданию только 3 js файла, поэтому не вынес в отдельный файл, и поэтому есть циклицеская зависимость
-    const cardImg = document.querySelector(".popup_format_image");
-    cardImg.querySelector(".popup__image").src = this._link;
-    cardImg.querySelector(".popup__image").alt = "Картинка";
-    cardImg.querySelector(".popup__subtitle").textContent = this._title;
-    openPopup(cardImg);
-  }
-
   _setEventListeners() {
     this._element.querySelector(".elements__like").addEventListener("click", this._addLikeButton);
-
     this._element.querySelector(".elements__item_close").addEventListener("click", () =>{
       this._removeCard();
     });
-
+    ////popupwithimg open
     this._element.querySelector(".elements__image").addEventListener("click", () =>{
-      this._enlargeCard();
+      this._handleClick();
     });
   }
 
   generateCard() {
     this._element = this._getTemplate();
-    this._setEventListeners();
     this._element.querySelector(".elements__image").src = this._link;
     this._element.querySelector(".elements__image").alt = "Картинка";
     this._element.querySelector(".elements__title").textContent = this._title;
+    this._setEventListeners();
     return this._element;
   }
 }
