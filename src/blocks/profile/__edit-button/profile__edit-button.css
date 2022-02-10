@@ -7,7 +7,7 @@
   cursor: pointer;
   width: 24px;
   height: 24px;
-  background: url("../../../../images/Edit-Button.svg");
+  background: url("../../../images/Edit-Button.svg");
   background-repeat: no-repeat;
 }
 
@@ -23,6 +23,6 @@
     margin-top: 30px;
     margin-bottom: auto;
     margin-left: 10px;
-    background: url("../../../../images/Edit-Button18.svg");
+    background: url("../../../images/Edit-Button18.svg");
   }
 }
