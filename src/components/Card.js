@@ -1,13 +1,11 @@
-//import {openPopup} from "./utils.js";
-import PopupWithImage from "./PopupWithImage.js";
-
-
 export default class Card{
   constructor(data, cardSelector, {handleCardClick}){
     this._title = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
     this._handleClick = handleCardClick;
+    this._element = this._getTemplate();
+    this._cardImage = this._element.querySelector(".elements__image");
   }
   _getTemplate() {
     const cardElement = document
@@ -26,20 +24,20 @@ export default class Card{
   }
 
   _setEventListeners() {
+    this._likeButton = this._element.querySelector(".elements__like");
     this._element.querySelector(".elements__like").addEventListener("click", this._addLikeButton);
     this._element.querySelector(".elements__item_close").addEventListener("click", () =>{
       this._removeCard();
     });
     ////popupwithimg open
-    this._element.querySelector(".elements__image").addEventListener("click", () =>{
+    this._cardImage.addEventListener("click", () =>{
       this._handleClick();
     });
   }
 
   generateCard() {
-    this._element = this._getTemplate();
-    this._element.querySelector(".elements__image").src = this._link;
-    this._element.querySelector(".elements__image").alt = "Картинка";
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._title + ".";
     this._element.querySelector(".elements__title").textContent = this._title;
     this._setEventListeners();
     return this._element;
