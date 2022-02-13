@@ -51,7 +51,7 @@ const cardList =
 
 function handleSubmitEditCard(){
   popupEdit.close();
-  cardsInfo.setUserInfo(popupEdit._formValues);
+  cardsInfo.setUserInfo(popupEdit.formValues);
 }
 
 
@@ -65,8 +65,8 @@ function handleSubmitAddCard(){
   popupAdd.close();
   const dataAdd = 
   { 
-    name: popupAdd._formValues[0],
-    link: popupAdd._formValues[1]
+    name: popupAdd.formValues.title,
+    link: popupAdd.formValues.link
   };
  
   const cardaddElement = createCard(dataAdd, ".elements__template", {

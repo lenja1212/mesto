@@ -33,9 +33,9 @@
         <button type="button" class="popup__close popup__close_format_edit"></button>
         <p class="popup__title">Редактировать профиль</p>
         <form class="popup__form popup__form_format_edit" novalidate>
-          <input id="title-input" type="text" class="popup__input popup__input_format_title" minlength="2" maxlength="40" required>
+          <input id="title-input" name="title" type="text" class="popup__input popup__input_format_title" minlength="2" maxlength="40" required>
           <span class="title-input-error popup__input-error" ></span>
-          <input id="subtitle-input" type="text" class="popup__input popup__input_format_subtitle" minlength="2" maxlength="200" required>
+          <input id="subtitle-input" name="subtitle" type="text" class="popup__input popup__input_format_subtitle" minlength="2" maxlength="200" required>
           <span class="subtitle-input-error popup__input-error" ></span>
           <button type="submit" class="popup__button">Сохранить</button>
         </form>
@@ -46,9 +46,9 @@
         <button type="button" class="popup__close popup__close_format_add"></button>
         <p class="popup__title">Новое место</p>
         <form class="popup__form popup__form_format_add" novalidate>
-          <input id="name-input" type="text" placeholder="Название" class="popup__input popup__input_format_name" minlength="2" maxlength="30" required>
+          <input id="name-input" name="title" type="text" placeholder="Название" class="popup__input popup__input_format_name" minlength="2" maxlength="30" required>
           <span class="name-input-error popup__input-error" ></span>
-          <input id="link-input" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_format_link" required>
+          <input id="link-input" name="link" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_format_link" required>
           <span class="link-input-error popup__input-error" ></span>
           <button type="submit" class="popup__button popup__button-submit-add popup__button_inactive" disabled>Создать</button>
         </form>
