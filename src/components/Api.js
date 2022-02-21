@@ -13,6 +13,7 @@ export class Api{
       if (res.ok) {
         return res.json();
       }
+      return Promise.reject(`Ошибка: ${res.status}`);
     })
     .catch((err) => {
       console.log(`Ошибка. Запрос не выполнен ${err}`);
@@ -29,6 +30,7 @@ export class Api{
       if (res.ok) {
         return res.json();
       }
+      return Promise.reject(`Ошибка: ${res.status}`);
     })
     .catch((err) => {
       console.log(`Ошибка. Запрос не выполнен ${err}`);
@@ -78,6 +80,7 @@ export class Api{
       if (res.ok) {
         return res.json();
       }
+      return Promise.reject(`Ошибка: ${res.status}`);
     })
     .catch((err) => {
       console.log(`Ошибка. Запрос не выполнен ${err}`);
@@ -95,7 +98,11 @@ export class Api{
       if (res.ok) {
         return res.json();
       }
+      return Promise.reject(`Ошибка: ${res.status}`);
     })
+    .catch((err) => {
+      console.log(`Ошибка. Запрос не выполнен ${err}`);
+    });  
   }
 
   addLike(cardId){
@@ -110,7 +117,11 @@ export class Api{
       if (res.ok) {
         return res.json();
       }
+      return Promise.reject(`Ошибка: ${res.status}`);
     })
+    .catch((err) => {
+      console.log(`Ошибка. Запрос не выполнен ${err}`);
+    }); 
   }
 
   deleteCard(cardId){
