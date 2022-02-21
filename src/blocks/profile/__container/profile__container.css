@@ -1,0 +1,32 @@
+/* .profile__container{
+  color: #FFFFFF;
+  transition: opacity 0.3s ease;
+  position: relative;
+}
+
+.profile__container::before{
+  content: "";
+  background-image: url(../../../images/ChangeButton.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 120px;
+  height: 120px; 
+  display: block;
+  opacity: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.profile__container:hover:before{
+  opacity: 0.8;
+  background-color: #000000;
+}
+
+@media screen and (max-width: 660px){
+  .profile__container {
+    margin: 0 auto;
+  }
+}   */

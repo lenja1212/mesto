@@ -1,13 +1,22 @@
+import Popup from "../components/Popup.js";
 export const popOpenEdit = document.querySelector(".profile__edit-button");
+export const popOpenAdd = document.querySelector(".profile__add-button");
+export const popOpenChange = document.querySelector(".profile__change-button");
 export const formEditElem = document.querySelector(".popup__form_format_edit");
 export const prName = document.querySelector(".popup__input_format_title");
 export const prAbout = document.querySelector(".popup__input_format_subtitle");
-export const popOpenAdd = document.querySelector(".profile__add-button");
+
 export const formAddElem = document.querySelector(".popup__form_format_add");
-export const elTitle= document.querySelector(".popup__input_format_name");
-export const elImg = document.querySelector(".popup__input_format_link");
+export const formChangeElem = document.querySelector(".popup__form_format_change");
+
 export const popCloseImg = document.querySelector(".popup__close_format_img");
 export const cardsListSelector = ".elements";
+export const profileAvatar = document.querySelector(".profile__avatar");
+
+export const popButtonDelete = document.querySelector(".popup__button_delete");
+export const popCloseDelete = document.querySelector(".popup__close_format_delete");
+
+export const popupDelete = new Popup(".popup_format_delete-card");
 
 export const initialCards = [ 
     {

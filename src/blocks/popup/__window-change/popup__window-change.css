@@ -1,0 +1,12 @@
+.popup__window-change{
+  background: #FFFFFF;
+  border-radius: 10px;
+  width: 430px;
+  min-height: 272px;
+  position: relative;
+  color: #000000;
+  font-family: "Inter", Arial, sans-serif;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+}

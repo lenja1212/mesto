@@ -1,0 +1,10 @@
+.elements__like-amount{
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  color: #000000;
+  flex: none;
+  margin-top: 3px;
+}

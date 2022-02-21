@@ -1,0 +1,20 @@
+.popup__window-delete{
+    background: #FFFFFF;
+    border-radius: 10px;
+    width: 430px;
+    min-height: 181px;
+    position: relative;
+    color: #000000;
+    font-family: "Inter", Arial, sans-serif;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+  }
+  
+  @media screen and (max-width: 660px) {
+    .popup__window-delete {
+      width: 282px;
+      min-height: 160px;
+    }
+  }
+  
