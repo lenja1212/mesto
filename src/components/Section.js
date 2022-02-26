@@ -1,8 +1,6 @@
 export default class Section{
-  constructor({data, renderer}, containerSelector){
-    this._renderedItems = data;
+  constructor({renderer}, containerSelector){
     this._renderer = renderer;
- //   console.log(this._renderedItems);
     this._container = document.querySelector(containerSelector);
   }
 
@@ -12,6 +10,11 @@ export default class Section{
 
   prependItem(element){
     this._container.prepend(element);
+  }
+
+  //getCards -> data -> renderItems
+  getSectionCards(cards){
+    this._renderedItems = cards;
   }
 
   renderItems(){
