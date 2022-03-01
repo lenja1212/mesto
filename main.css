@@ -73,7 +73,7 @@
 /*!***********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/__item/elements__item.css ***!
   \***********************************************************************************************************************************************************************/
-.elements__item{background-color:#fff;border-radius:10px;list-style-type:none;overflow:hidden;position:relative;width:100%}
+.elements__item{background-color:#fff;border-radius:10px;list-style-type:none;max-height:361px;overflow:hidden;position:relative;width:100%}
 /*!************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/__item/_close/elements__item_close.css ***!
   \************************************************************************************************************************************************************************************/
@@ -85,7 +85,7 @@
 /*!*************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/__image/elements__image.css ***!
   \*************************************************************************************************************************************************************************/
-.elements__image{height:282px;-o-object-fit:cover;object-fit:cover;width:282px;z-index:2}.elements__image:hover{opacity:.6}
+.elements__image{max-height:282px;min-height:282px;-o-object-fit:cover;object-fit:cover;width:282px;z-index:2}.elements__image:hover{opacity:.6}
 /*!***********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/__like/elements__like.css ***!
   \***********************************************************************************************************************************************************************/
