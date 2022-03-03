@@ -111,7 +111,6 @@ function handleSubmitEditCard(inputValues){
   });
 }
 
-
 function createCard(data, cardSelector){
   const card = new Card(data, cardSelector, {
     handleCardClick:() =>{
@@ -123,10 +122,18 @@ function createCard(data, cardSelector){
       popupDelete.getCard(card);
     },
     handleAddLike: (cardId) =>{
-      api.addLike(cardId);
+      api.addLike(cardId)
+      .then((data) => {
+        console.log(data.likes.length);
+        card.setLikesAmount(data.likes.length);
+      })
     },
     handleDeleteLike: (cardId) =>{
-      api.deleteLike(cardId);
+      api.deleteLike(cardId)
+      .then((data) => {
+        console.log(data.likes.length);
+        card.setLikesAmount(data.likes.length);
+      })
     }
   })
   return card;
@@ -138,7 +145,6 @@ function handleSubmitAddCard(inputValues){
     return res.json();
   })
   .then((data) => {
-    // console.log("DATA", data);
     const cardElement = createCard(data, ".elements__template-with-delete"); 
     cardList.prependItem(cardElement.generateCard());
     popupAdd.close();
@@ -178,11 +184,24 @@ function handleSubmitChangeCard(){
   });
 }
 
+const deleteCard = () => {
+  api.deleteCard()
+  .then(()=>{
+    popupDelete.close();
+    this.card.removeCard();
+  })
+  .catch((err) => { 
+    console.log(`Ошибка. Запрос не выполнен ${err}`); 
+  });
+}
+
 function handleSubmitDeleteCard(){
   // console.log("card", this.card)
-  popupDelete.close();
-  this.card.removeCard();
   api.deleteCard()
+  .then(()=>{
+    popupDelete.close();
+    this.card.removeCard();
+  })
   .catch((err) => { 
     console.log(`Ошибка. Запрос не выполнен ${err}`); 
   });

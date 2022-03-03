@@ -1,7 +1,3 @@
-//import  {popButtonDelete} from "../utils/constants.js"
-
-import {api} from "../components/Api.js";
-
 export default class Card{
   constructor(data, cardSelector, {handleCardClick, handleDeleteCard, handleAddLike, handleDeleteLike} ){
     this._title = data.name;
@@ -17,13 +13,7 @@ export default class Card{
     this.removeCard = this.removeCard.bind(this);
     this._handleSetLike = handleAddLike;
     this._handleResetLike = handleDeleteLike;
-
     this._likeButton = this._element.querySelector(".elements__like");
-    // console.log(handleAddLike);
-      // console.log(data);
-    // console.log(data._id)
-
-
   }
   _getTemplate() {
     const cardElement = document
@@ -36,22 +26,22 @@ export default class Card{
 
   _addLikeButton(evt){
     if(evt.target.classList.contains("elements__like_active")){
-      this._likesAmount -= 1; //data.likes.length; data from server
       //Server
       this._handleResetLike(this._id)
- 
     }
     else{
-      this._likesAmount += 1;
       this._handleSetLike(this._id)
     }
-    evt.target.classList.toggle("elements__like_active");
-    const likesElement = evt.target.closest(".elements__like-container").querySelector(".elements__like-amount");
-    likesElement.textContent = this._likesAmount;
   }
 
   setLikeActive(){
     this._likeButton.classList.add("elements__like_active");
+  }
+
+  setLikesAmount(likesAmount){
+    this._likeButton.classList.toggle("elements__like_active");
+    const likesElement = this._likeButton.closest(".elements__like-container").querySelector(".elements__like-amount");
+    likesElement.textContent = likesAmount;
   }
   
   removeCard(){
