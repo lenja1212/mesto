@@ -124,14 +124,14 @@ function createCard(data, cardSelector){
     handleAddLike: (cardId) =>{
       api.addLike(cardId)
       .then((data) => {
-        console.log(data.likes.length);
+        // console.log(data.likes.length);
         card.setLikesAmount(data.likes.length);
       })
     },
     handleDeleteLike: (cardId) =>{
       api.deleteLike(cardId)
       .then((data) => {
-        console.log(data.likes.length);
+        // console.log(data.likes.length);
         card.setLikesAmount(data.likes.length);
       })
     }
